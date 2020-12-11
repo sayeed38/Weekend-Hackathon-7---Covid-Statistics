@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const port = 8080;
+const port = 5000;
 
 // Parse JSON bodies (as sent by API clients)
 app.use(express.urlencoded({ extended: false }));
@@ -21,7 +21,7 @@ app.get("/totalRecovered", (req, res) => {
       },
     ])
     .then((result) => {
-      (result._doc_id = "total"), res.send({ data: result[0] });
+      res.send({ data: result[0] });
     });
 });
 
@@ -40,7 +40,7 @@ app.get("/totalActive", (req, res) => {
       },
     ])
     .then((result) => {
-      (result._doc_id = "total"), res.send({ data: result[0] });
+      res.send({ data: result[0] });
     });
 });
 
