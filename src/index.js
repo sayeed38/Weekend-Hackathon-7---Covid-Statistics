@@ -20,7 +20,9 @@ app.get("/totalRecovered", (req, res) => {
         },
       },
     ])
-    .then((result) => res.send(result));
+    .then((result) => {
+      (result._doc_id = "total"), res.send({ data: result[0] });
+    });
 });
 
 app.get("/totalActive", (req, res) => {
@@ -37,7 +39,9 @@ app.get("/totalActive", (req, res) => {
         },
       },
     ])
-    .then((result) => res.send(result));
+    .then((result) => {
+      (result._doc_id = "total"), res.send({ data: result[0] });
+    });
 });
 
 app.get("/totalDeath", (req, res) => {
@@ -52,7 +56,7 @@ app.get("/totalDeath", (req, res) => {
         },
       },
     ])
-    .then((result) => res.send(result));
+    .then((result) => res.send({ data: result[0] }));
 });
 
 app.get("/hotspotStates", (req, res) => {
@@ -81,7 +85,7 @@ app.get("/hotspotStates", (req, res) => {
         },
       },
     ])
-    .then((result) => res.send(result));
+    .then((result) => res.send({ data: result }));
 });
 
 app.get("/healthyStates", (req, res) => {
@@ -102,7 +106,7 @@ app.get("/healthyStates", (req, res) => {
         },
       },
     ])
-    .then((result) => res.send(result));
+    .then((result) => res.send({ data: result }));
 });
 
 app.listen(port, () => console.log(`App listening on port ${port}!`));
